@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ZeusShop Express | Ventas</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+
+<body class="dashboard-body">
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-logo">
+        <img
+            src="../assets/img/logo-sidebar.png"
+            alt="ZeusShop Express">
+    </div>
+
+    <div class="sidebar-user">
+
+        <div class="user-avatar">
+            <i class="bi bi-person"></i>
+        </div>
+
+        <div>
+            <strong>Administrador</strong>
+            <small>admin@zeusshop.com</small>
+        </div>
+
+    </div>
+
+    <nav class="sidebar-menu">
+
+        <p class="menu-title">PRINCIPAL</p>
+
+        <a href="dashboard.html" class="menu-item">
+            <i class="bi bi-grid-1x2-fill"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="productos.html" class="menu-item">
+            <i class="bi bi-box-seam"></i>
+            <span>Productos</span>
+        </a>
+
+        <a href="inventario.html" class="menu-item">
+            <i class="bi bi-clipboard-data"></i>
+            <span>Inventario</span>
+        </a>
+
+        <a href="clientes.html" class="menu-item">
+            <i class="bi bi-people"></i>
+            <span>Clientes</span>
+        </a>
+
+        <a href="ventas.html" class="menu-item active">
+            <i class="bi bi-cash-stack"></i>
+            <span>Ventas</span>
+        </a>
+
+        <a href="pedidos.html" class="menu-item">
+            <i class="bi bi-cart3"></i>
+            <span>Pedidos</span>
+        </a>
+
+        <p class="menu-title">ADMINISTRACIÓN</p>
+
+        <a href="reportes.html" class="menu-item">
+            <i class="bi bi-bar-chart-line"></i>
+            <span>Reportes</span>
+        </a>
+
+        <a href="usuarios.html" class="menu-item">
+            <i class="bi bi-person-gear"></i>
+            <span>Usuarios</span>
+        </a>
+
+        <a href="notificaciones.html" class="menu-item">
+            <i class="bi bi-bell"></i>
+            <span>Notificaciones</span>
+        </a>
+
+        <a href="configuracion.html" class="menu-item">
+            <i class="bi bi-gear"></i>
+            <span>Configuración</span>
+        </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+        <a
+            href="../index.html"
+            class="menu-item logout"
+            id="logoutButton">
+
+            <i class="bi bi-box-arrow-left"></i>
+            <span>Cerrar sesión</span>
+
+        </a>
+
+    </div>
+
+</aside>
+
+
+<main class="dashboard-main">
+
+    <header class="dashboard-header">
+
+        <div class="header-left">
+
+            <button
+                class="sidebar-toggle"
+                id="sidebarToggle">
+
+                <i class="bi bi-list"></i>
+
+            </button>
+
+            <div>
+
+                <h1>Ventas</h1>
+
+                <p>Registro y administración de ventas</p>
+
+            </div>
+
+        </div>
+
+        <div class="header-right">
+
+            <button class="header-icon">
+
+                <i class="bi bi-bell"></i>
+
+                <span class="notification-badge">
+                    3
+                </span>
+
+            </button>
+
+            <div class="header-user">
+
+                <div class="header-avatar">
+                    <i class="bi bi-person"></i>
+                </div>
+
+                <div>
+                    <strong>Administrador</strong>
+                    <small>Administrador</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <section class="dashboard-content">
+
+        <div class="products-page-header">
+
+            <div>
+
+                <h2>Ventas</h2>
+
+                <p>
+                    Registra y consulta las ventas realizadas.
+                </p>
+
+            </div>
+
+            <button
+                class="btn btn-primary"
+                id="newSaleButton">
+
+                <i class="bi bi-plus-lg"></i>
+
+                Nueva venta
+
+            </button>
+
+        </div>
+
+
+        <!-- INDICADORES -->
+
+        <div class="row g-3 mb-3">
+
+            <div class="col-12 col-md-4">
+
+                <div class="dashboard-panel p-3">
+
+                    <small class="text-muted">
+                        Ventas registradas
+                    </small>
+
+                    <h3 id="salesTotalCount">
+                        0
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-12 col-md-4">
+
+                <div class="dashboard-panel p-3">
+
+                    <small class="text-muted">
+                        Ventas del día
+                    </small>
+
+                    <h3 id="salesTodayCount">
+                        0
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-12 col-md-4">
+
+                <div class="dashboard-panel p-3">
+
+                    <small class="text-muted">
+                        Ingresos registrados
+                    </small>
+
+                    <h3 id="salesTotalValue">
+                        $0
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FILTROS -->
+
+        <div class="dashboard-panel products-filter-panel">
+
+            <div class="row g-3 align-items-end">
+
+                <div class="col-12 col-lg-6">
+
+                    <label class="form-label">
+                        Buscar venta
+                    </label>
+
+                    <div class="product-search">
+
+                        <i class="bi bi-search"></i>
+
+                        <input
+                            type="text"
+                            id="salesSearch"
+                            class="form-control"
+                            placeholder="Buscar por número, cliente o producto...">
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 col-md-4 col-lg-3">
+
+                    <label class="form-label">
+                        Estado
+                    </label>
+
+                    <select
+                        id="salesStatusFilter"
+                        class="form-select">
+
+                        <option value="todos">
+                            Todos
+                        </option>
+
+                        <option value="Completada">
+                            Completada
+                        </option>
+
+                        <option value="Anulada">
+                            Anulada
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="col-12 col-md-4 col-lg-3">
+
+                    <button
+                        class="btn btn-light w-100"
+                        id="clearSalesFilters">
+
+                        <i class="bi bi-arrow-counterclockwise"></i>
+
+                        Limpiar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- TABLA -->
+
+        <div class="dashboard-panel products-table-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h3>
+                        Historial de ventas
+                    </h3>
+
+                    <span id="salesCounter">
+                        0 ventas
+                    </span>
+
+                </div>
+
+                <button
+                    class="table-action-button"
+                    id="refreshSales">
+
+                    <i class="bi bi-arrow-clockwise"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="table-responsive">
+
+                <table class="table dashboard-table products-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Venta
+                            </th>
+
+                            <th>
+                                Cliente
+                            </th>
+
+                            <th>
+                                Producto
+                            </th>
+
+                            <th>
+                                Cantidad
+                            </th>
+
+                            <th>
+                                Total
+                            </th>
+
+                            <th>
+                                Estado
+                            </th>
+
+                            <th class="text-center">
+                                Acción
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="salesTableBody"></tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- MODAL NUEVA VENTA -->
+
+<div
+    class="modal fade"
+    id="saleModal"
+    tabindex="-1">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h5 class="modal-title">
+                        Nueva venta
+                    </h5>
+
+                    <small>
+                        Registra una nueva venta.
+                    </small>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+
+            <form id="saleForm">
+
+                <div class="modal-body">
+
+                    <div class="row g-3">
+
+                        <div class="col-12">
+
+                            <label class="form-label">
+                                Cliente
+                            </label>
+
+                            <select
+                                id="saleClient"
+                                class="form-select"
+                                required>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="col-12">
+
+                            <label class="form-label">
+                                Producto
+                            </label>
+
+                            <select
+                                id="saleProduct"
+                                class="form-select"
+                                required>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="col-12 col-md-6">
+
+                            <label class="form-label">
+                                Cantidad
+                            </label>
+
+                            <input
+                                type="number"
+                                id="saleQuantity"
+                                class="form-control"
+                                min="1"
+                                value="1"
+                                required>
+
+                        </div>
+
+
+                        <div class="col-12 col-md-6">
+
+                            <label class="form-label">
+                                Precio unitario
+                            </label>
+
+                            <input
+                                type="number"
+                                id="salePrice"
+                                class="form-control"
+                                readonly>
+
+                        </div>
+
+
+                        <div class="col-12 col-md-6">
+
+                            <label class="form-label">
+                                Descuento
+                            </label>
+
+                            <input
+                                type="number"
+                                id="saleDiscount"
+                                class="form-control"
+                                min="0"
+                                value="0">
+
+                        </div>
+
+
+                        <div class="col-12 col-md-6">
+
+                            <label class="form-label">
+                                Total
+                            </label>
+
+                            <input
+                                type="text"
+                                id="saleTotal"
+                                class="form-control"
+                                readonly>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn btn-light"
+                        data-bs-dismiss="modal">
+
+                        Cancelar
+
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary">
+
+                        <i class="bi bi-check-lg"></i>
+
+                        Registrar venta
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<script src="../assets/js/app.js"></script>
+
+</body>
+
+</html>

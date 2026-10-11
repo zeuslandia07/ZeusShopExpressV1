@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ZeusShop Express | Productos</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- Fuente -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS principal -->
+    <link
+        rel="stylesheet"
+        href="../assets/css/styles.css"
+    >
+
+</head>
+
+
+<body class="dashboard-body">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+
+        <div class="sidebar-logo">
+
+            <img
+                src="../assets/img/logo-sidebar.png"
+                alt="ZeusShop Express"
+            >
+
+        </div>
+
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+
+                <i class="bi bi-person"></i>
+
+            </div>
+
+            <div>
+
+                <strong>Administrador</strong>
+
+                <small>admin@zeusshop.com</small>
+
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+
+            <p class="menu-title">
+                PRINCIPAL
+            </p>
+
+
+            <a
+                href="dashboard.html"
+                class="menu-item"
+            >
+
+                <i class="bi bi-grid-1x2-fill"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a
+                href="productos.html"
+                class="menu-item active"
+            >
+
+                <i class="bi bi-box-seam"></i>
+
+                <span>Productos</span>
+
+            </a>
+
+
+            <a
+                href="inventario.html"
+                class="menu-item"
+            >
+
+                <i class="bi bi-clipboard-data"></i>
+
+                <span>Inventario</span>
+
+            </a>
+
+
+            <a
+                href="clientes.html"
+                class="menu-item"
+            >
+
+                <i class="bi bi-people"></i>
+
+                <span>Clientes</span>
+
+            </a>
+
+
+            <a
+                href="ventas.html"
+                class="menu-item"
+            >
+
+                <i class="bi bi-cash-stack"></i>
+
+                <span>Ventas</span>
+
+            </a>
+
+
+            <a
+                href="pedidos.html"
+                class="menu-item"
+            >
+
+                <i class="bi bi-cart3"></i>
+
+                <span>Pedidos</span>
+
+            </a>
+
+
+            <p class="menu-title">
+                ADMINISTRACIÓN
+            </p>
+
+
+            <a
+                href="reportes.html"
+                class="menu-item"
+            >
+
+                <i class="bi bi-bar-chart-line"></i>
+
+                <span>Reportes</span>
+
+            </a>
+
+
+            <a
+                href="usuarios.html"
+                class="menu-item"
+            >
+
+                <i class="bi bi-person-gear"></i>
+
+                <span>Usuarios</span>
+
+            </a>
+
+
+            <a
+                href="notificaciones.html"
+                class="menu-item"
+            >
+
+                <i class="bi bi-bell"></i>
+
+                <span>Notificaciones</span>
+
+            </a>
+
+
+            <a
+                href="configuracion.html"
+                class="menu-item"
+            >
+
+                <i class="bi bi-gear"></i>
+
+                <span>Configuración</span>
+
+            </a>
+
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="../index.html"
+                class="menu-item logout"
+                id="logoutButton"
+            >
+
+                <i class="bi bi-box-arrow-left"></i>
+
+                <span>Cerrar sesión</span>
+
+            </a>
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
+    <main class="dashboard-main">
+
+
+        <!-- HEADER -->
+
+        <header class="dashboard-header">
+
+
+            <div class="header-left">
+
+                <button
+                    class="sidebar-toggle"
+                    id="sidebarToggle"
+                >
+
+                    <i class="bi bi-list"></i>
+
+                </button>
+
+
+                <div>
+
+                    <h1>
+                        Productos
+                    </h1>
+
+                    <p>
+                        Administración del catálogo de productos
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="header-right">
+
+
+                <button
+                    class="header-icon"
+                    title="Notificaciones"
+                >
+
+                    <i class="bi bi-bell"></i>
+
+                    <span class="notification-badge">
+                        3
+                    </span>
+
+                </button>
+
+
+                <div class="header-user">
+
+                    <div class="header-avatar">
+
+                        <i class="bi bi-person"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Administrador
+                        </strong>
+
+                        <small>
+                            Administrador
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =====================================================
+             CONTENIDO PRODUCTOS
+        ====================================================== -->
+
+        <section class="dashboard-content">
+
+
+            <!-- ENCABEZADO -->
+
+            <div class="products-page-header">
+
+
+                <div>
+
+                    <h2>
+                        Productos
+                    </h2>
+
+                    <p>
+                        Consulta y administra los productos registrados.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="newProductButton"
+                >
+
+                    <i class="bi bi-plus-lg"></i>
+
+                    Nuevo producto
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FILTROS
+            ================================================== -->
+
+            <div class="dashboard-panel products-filter-panel">
+
+
+                <div class="row g-3 align-items-end">
+
+
+                    <!-- BÚSQUEDA -->
+
+                    <div class="col-12 col-lg-5">
+
+                        <label
+                            for="productSearch"
+                            class="form-label"
+                        >
+                            Buscar producto
+                        </label>
+
+
+                        <div class="product-search">
+
+                            <i class="bi bi-search"></i>
+
+                            <input
+                                type="text"
+                                id="productSearch"
+                                class="form-control"
+                                placeholder="Buscar por nombre o código..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- CATEGORÍA -->
+
+                    <div class="col-12 col-md-4 col-lg-3">
+
+                        <label
+                            for="categoryFilter"
+                            class="form-label"
+                        >
+                            Categoría
+                        </label>
+
+
+                        <select
+                            id="categoryFilter"
+                            class="form-select"
+                        >
+
+                            <option value="todos">
+                                Todas las categorías
+                            </option>
+
+                            <option value="electronica">
+                                Electrónica
+                            </option>
+
+                            <option value="accesorios">
+                                Accesorios
+                            </option>
+
+                            <option value="computacion">
+                                Computación
+                            </option>
+
+                            <option value="hogar">
+                                Hogar
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- ESTADO -->
+
+                    <div class="col-12 col-md-4 col-lg-2">
+
+                        <label
+                            for="statusFilter"
+                            class="form-label"
+                        >
+                            Estado
+                        </label>
+
+
+                        <select
+                            id="statusFilter"
+                            class="form-select"
+                        >
+
+                            <option value="todos">
+                                Todos
+                            </option>
+
+                            <option value="activo">
+                                Activo
+                            </option>
+
+                            <option value="inactivo">
+                                Inactivo
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- LIMPIAR -->
+
+                    <div class="col-12 col-md-4 col-lg-2">
+
+                        <button
+                            type="button"
+                            class="btn btn-light w-100"
+                            id="clearFilters"
+                        >
+
+                            <i class="bi bi-arrow-counterclockwise"></i>
+
+                            Limpiar
+
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TABLA DE PRODUCTOS
+            ================================================== -->
+
+            <div class="dashboard-panel products-table-panel">
+
+
+                <div class="panel-header">
+
+
+                    <div>
+
+                        <h3>
+                            Lista de productos
+                        </h3>
+
+                        <span id="productCounter">
+                            8 productos encontrados
+                        </span>
+
+                    </div>
+
+
+                    <div class="product-table-actions">
+
+                        <button
+                            type="button"
+                            class="table-action-button"
+                            title="Actualizar"
+                            id="refreshProducts"
+                        >
+
+                            <i class="bi bi-arrow-clockwise"></i>
+
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="table-responsive">
+
+
+                    <table class="table dashboard-table products-table">
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Código
+                                </th>
+
+                                <th>
+                                    Producto
+                                </th>
+
+                                <th>
+                                    Categoría
+                                </th>
+
+                                <th>
+                                    Precio
+                                </th>
+
+                                <th>
+                                    Stock
+                                </th>
+
+                                <th>
+                                    Estado
+                                </th>
+
+                                <th class="text-center">
+                                    Acciones
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="productsTableBody">
+
+
+                            <tr>
+
+                                <td>
+                                    P-001
+                                </td>
+
+                                <td>
+
+                                    <div class="product-name-cell">
+
+                                        <div class="product-image">
+
+                                            <i class="bi bi-headphones"></i>
+
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Audífonos Bluetooth
+                                            </strong>
+
+                                            <small>
+                                                Audífonos inalámbricos
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    Electrónica
+                                </td>
+
+                                <td>
+                                    $89.900
+                                </td>
+
+                                <td>
+                                    <span class="stock-normal">
+                                        35
+                                    </span>
+                                </td>
+
+                                <td>
+
+                                    <span class="status completed">
+                                        Activo
+                                    </span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="product-actions">
+
+                                        <button
+                                            class="product-action edit"
+                                            title="Editar"
+                                        >
+
+                                            <i class="bi bi-pencil"></i>
+
+                                        </button>
+
+
+                                        <button
+                                            class="product-action delete"
+                                            title="Eliminar"
+                                        >
+
+                                            <i class="bi bi-trash"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+
+                            <tr>
+
+                                <td>
+                                    P-002
+                                </td>
+
+                                <td>
+
+                                    <div class="product-name-cell">
+
+                                        <div class="product-image">
+
+                                            <i class="bi bi-keyboard"></i>
+
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Teclado mecánico
+                                            </strong>
+
+                                            <small>
+                                                Teclado gaming RGB
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    Computación
+                                </td>
+
+                                <td>
+                                    $159.900
+                                </td>
+
+                                <td>
+                                    <span class="stock-warning-text">
+                                        5
+                                    </span>
+                                </td>
+
+                                <td>
+
+                                    <span class="status completed">
+                                        Activo
+                                    </span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="product-actions">
+
+                                        <button
+                                            class="product-action edit"
+                                            title="Editar"
+                                        >
+
+                                            <i class="bi bi-pencil"></i>
+
+                                        </button>
+
+
+                                        <button
+                                            class="product-action delete"
+                                            title="Eliminar"
+                                        >
+
+                                            <i class="bi bi-trash"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+
+                            <tr>
+
+                                <td>
+                                    P-003
+                                </td>
+
+                                <td>
+
+                                    <div class="product-name-cell">
+
+                                        <div class="product-image">
+
+                                            <i class="bi bi-mouse"></i>
+
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Mouse inalámbrico
+                                            </strong>
+
+                                            <small>
+                                                Mouse ergonómico
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    Accesorios
+                                </td>
+
+                                <td>
+                                    $64.900
+                                </td>
+
+                                <td>
+                                    <span class="stock-warning-text">
+                                        7
+                                    </span>
+                                </td>
+
+                                <td>
+
+                                    <span class="status completed">
+                                        Activo
+                                    </span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="product-actions">
+
+                                        <button
+                                            class="product-action edit"
+                                            title="Editar"
+                                        >
+
+                                            <i class="bi bi-pencil"></i>
+
+                                        </button>
+
+
+                                        <button
+                                            class="product-action delete"
+                                            title="Eliminar"
+                                        >
+
+                                            <i class="bi bi-trash"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+
+                            <tr>
+
+                                <td>
+                                    P-004
+                                </td>
+
+                                <td>
+
+                                    <div class="product-name-cell">
+
+                                        <div class="product-image">
+
+                                            <i class="bi bi-phone"></i>
+
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Soporte para celular
+                                            </strong>
+
+                                            <small>
+                                                Soporte ajustable
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    Accesorios
+                                </td>
+
+                                <td>
+                                    $39.900
+                                </td>
+
+                                <td>
+                                    <span class="stock-normal">
+                                        28
+                                    </span>
+                                </td>
+
+                                <td>
+
+                                    <span class="status completed">
+                                        Activo
+                                    </span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="product-actions">
+
+                                        <button
+                                            class="product-action edit"
+                                            title="Editar"
+                                        >
+
+                                            <i class="bi bi-pencil"></i>
+
+                                        </button>
+
+
+                                        <button
+                                            class="product-action delete"
+                                            title="Eliminar"
+                                        >
+
+                                            <i class="bi bi-trash"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+
+                            <tr>
+
+                                <td>
+                                    P-005
+                                </td>
+
+                                <td>
+
+                                    <div class="product-name-cell">
+
+                                        <div class="product-image">
+
+                                            <i class="bi bi-laptop"></i>
+
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Base para portátil
+                                            </strong>
+
+                                            <small>
+                                                Base refrigerante
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    Computación
+                                </td>
+
+                                <td>
+                                    $119.900
+                                </td>
+
+                                <td>
+                                    <span class="stock-normal">
+                                        18
+                                    </span>
+                                </td>
+
+                                <td>
+
+                                    <span class="status completed">
+                                        Activo
+                                    </span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="product-actions">
+
+                                        <button
+                                            class="product-action edit"
+                                            title="Editar"
+                                        >
+
+                                            <i class="bi bi-pencil"></i>
+
+                                        </button>
+
+
+                                        <button
+                                            class="product-action delete"
+                                            title="Eliminar"
+                                        >
+
+                                            <i class="bi bi-trash"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+
+                            <tr>
+
+                                <td>
+                                    P-006
+                                </td>
+
+                                <td>
+
+                                    <div class="product-name-cell">
+
+                                        <div class="product-image">
+
+                                            <i class="bi bi-speaker"></i>
+
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Parlante Bluetooth
+                                            </strong>
+
+                                            <small>
+                                                Parlante portátil
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    Electrónica
+                                </td>
+
+                                <td>
+                                    $129.900
+                                </td>
+
+                                <td>
+                                    <span class="stock-normal">
+                                        14
+                                    </span>
+                                </td>
+
+                                <td>
+
+                                    <span class="status completed">
+                                        Activo
+                                    </span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="product-actions">
+
+                                        <button
+                                            class="product-action edit"
+                                            title="Editar"
+                                        >
+
+                                            <i class="bi bi-pencil"></i>
+
+                                        </button>
+
+
+                                        <button
+                                            class="product-action delete"
+                                            title="Eliminar"
+                                        >
+
+                                            <i class="bi bi-trash"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+
+                            <tr>
+
+                                <td>
+                                    P-007
+                                </td>
+
+                                <td>
+
+                                    <div class="product-name-cell">
+
+                                        <div class="product-image">
+
+                                            <i class="bi bi-usb-drive"></i>
+
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Memoria USB 64GB
+                                            </strong>
+
+                                            <small>
+                                                Memoria USB 3.0
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    Computación
+                                </td>
+
+                                <td>
+                                    $29.900
+                                </td>
+
+                                <td>
+                                    <span class="stock-normal">
+                                        42
+                                    </span>
+
+                                </td>
+
+                                <td>
+
+                                    <span class="status completed">
+                                        Activo
+                                    </span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="product-actions">
+
+                                        <button
+                                            class="product-action edit"
+                                            title="Editar"
+                                        >
+
+                                            <i class="bi bi-pencil"></i>
+
+                                        </button>
+
+
+                                        <button
+                                            class="product-action delete"
+                                            title="Eliminar"
+                                        >
+
+                                            <i class="bi bi-trash"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+
+                            <tr>
+
+                                <td>
+                                    P-008
+                                </td>
+
+                                <td>
+
+                                    <div class="product-name-cell">
+
+                                        <div class="product-image">
+
+                                            <i class="bi bi-watch"></i>
+
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Smartwatch
+                                            </strong>
+
+                                            <small>
+                                                Reloj inteligente
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    Electrónica
+                                </td>
+
+                                <td>
+                                    $199.900
+                                </td>
+
+                                <td>
+                                    <span class="stock-danger-text">
+                                        3
+                                    </span>
+
+                                </td>
+
+                                <td>
+
+                                    <span class="status completed">
+                                        Activo
+                                    </span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="product-actions">
+
+                                        <button
+                                            class="product-action edit"
+                                            title="Editar"
+                                        >
+
+                                            <i class="bi bi-pencil"></i>
+
+                                        </button>
+
+
+                                        <button
+                                            class="product-action delete"
+                                            title="Eliminar"
+                                        >
+
+                                            <i class="bi bi-trash"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- PAGINACIÓN -->
+
+                <div class="products-pagination">
+
+
+                    <span>
+                        Mostrando 1 - 8 de 8 productos
+                    </span>
+
+
+                    <div>
+
+                        <button
+                            class="pagination-button"
+                            disabled
+                        >
+
+                            <i class="bi bi-chevron-left"></i>
+
+                        </button>
+
+
+                        <button
+                            class="pagination-button active"
+                        >
+                            1
+                        </button>
+
+
+                        <button
+                            class="pagination-button"
+                            disabled
+                        >
+
+                            <i class="bi bi-chevron-right"></i>
+
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         MODAL NUEVO PRODUCTO
+    ====================================================== -->
+
+    <div
+        class="modal fade"
+        id="productModal"
+        tabindex="-1"
+        aria-hidden="true"
+    >
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+
+                <div class="modal-header">
+
+                    <div>
+
+                        <h5 class="modal-title">
+                            Nuevo producto
+                        </h5>
+
+                        <small>
+                            Registra un nuevo producto en el catálogo.
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                    ></button>
+
+                </div>
+
+
+                <form id="productForm">
+
+
+                    <div class="modal-body">
+
+
+                        <div class="row g-3">
+
+
+                            <div class="col-12 col-md-6">
+
+                                <label
+                                    for="productCode"
+                                    class="form-label"
+                                >
+                                    Código
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="productCode"
+                                    placeholder="Ej. P-009"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="col-12 col-md-6">
+
+                                <label
+                                    for="productName"
+                                    class="form-label"
+                                >
+                                    Nombre
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="productName"
+                                    placeholder="Nombre del producto"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="col-12 col-md-6">
+
+                                <label
+                                    for="productCategory"
+                                    class="form-label"
+                                >
+                                    Categoría
+                                </label>
+
+                                <select
+                                    class="form-select"
+                                    id="productCategory"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Seleccionar
+                                    </option>
+
+                                    <option value="Electrónica">
+                                        Electrónica
+                                    </option>
+
+                                    <option value="Accesorios">
+                                        Accesorios
+                                    </option>
+
+                                    <option value="Computación">
+                                        Computación
+                                    </option>
+
+                                    <option value="Hogar">
+                                        Hogar
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="col-12 col-md-6">
+
+                                <label
+                                    for="productPrice"
+                                    class="form-label"
+                                >
+                                    Precio
+                                </label>
+
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    id="productPrice"
+                                    placeholder="Ej. 89900"
+                                    min="0"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="col-12 col-md-6">
+
+                                <label
+                                    for="productStock"
+                                    class="form-label"
+                                >
+                                    Stock
+                                </label>
+
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    id="productStock"
+                                    placeholder="Cantidad disponible"
+                                    min="0"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="col-12 col-md-6">
+
+                                <label
+                                    for="productStatus"
+                                    class="form-label"
+                                >
+                                    Estado
+                                </label>
+
+                                <select
+                                    class="form-select"
+                                    id="productStatus"
+                                    required
+                                >
+
+                                    <option value="Activo">
+                                        Activo
+                                    </option>
+
+                                    <option value="Inactivo">
+                                        Inactivo
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="modal-footer">
+
+                        <button
+                            type="button"
+                            class="btn btn-light"
+                            data-bs-dismiss="modal"
+                        >
+                            Cancelar
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+
+                            <i class="bi bi-check-lg"></i>
+
+                            Guardar producto
+
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Bootstrap JS -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+
+    <!-- JavaScript principal -->
+
+    <script src="../assets/js/app.js"></script>
+
+
+</body>
+
+</html>
