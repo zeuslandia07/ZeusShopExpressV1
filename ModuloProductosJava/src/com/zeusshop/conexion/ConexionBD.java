@@ -12,7 +12,7 @@ public class ConexionBD {
     private static final String URL =
             "jdbc:mariadb://localhost:3306/zeusshop_express";
     private static final String USUARIO = "root";
-    private static final String CLAVE = "";
+    private static final String CLAVE = "123456";
 
     private ConexionBD() {
     }

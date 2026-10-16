@@ -1,0 +1,2 @@
+Copia aquí el conector JDBC de MariaDB (mariadb-java-client-X.X.X.jar).
+Es el mismo archivo que usaste en ModuloProductosJava/lib.

@@ -1,0 +1,32 @@
+:root { --azul: #102A72; --gris: #F3F4F6; --texto: #1f2937; --rojo: #b91c1c; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Roboto, Arial, sans-serif; background: #fff; color: var(--texto); }
+.barra { background: var(--azul); color: #fff; display: flex; justify-content: space-between;
+         align-items: center; padding: 14px 24px; }
+.barra a { color: #fff; text-decoration: none; }
+.logo { font-weight: bold; font-size: 1.2rem; }
+.contenedor { max-width: 1000px; margin: 0 auto; padding: 24px 16px; }
+.titulo-fila { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+h1 { color: var(--azul); }
+.boton, button { background: var(--azul); color: #fff; border: 0; padding: 9px 16px;
+                 border-radius: 6px; cursor: pointer; text-decoration: none; font-size: 0.95rem; }
+button.peligro { background: var(--rojo); }
+.aviso { background: #e0e7ff; border-left: 4px solid var(--azul); padding: 10px 14px; border-radius: 4px; }
+.busqueda { display: flex; gap: 8px; align-items: center; margin: 16px 0; flex-wrap: wrap; }
+input, select, textarea { width: 100%; padding: 9px; border: 1px solid #d1d5db; border-radius: 6px;
+                          background: var(--gris); font-family: inherit; }
+.busqueda input { width: auto; flex: 1; min-width: 180px; }
+.tabla-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th { background: var(--azul); color: #fff; text-align: left; padding: 10px; }
+td { padding: 10px; border-bottom: 1px solid #e5e7eb; }
+.acciones { display: flex; gap: 10px; align-items: center; }
+.acciones form { margin: 0; }
+.formulario { display: grid; gap: 14px; max-width: 640px; }
+.formulario label { display: grid; gap: 6px; font-weight: 500; }
+.fila { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.botones { display: flex; gap: 12px; align-items: center; }
+.cancelar { color: var(--azul); }
+.total, .pie { color: #6b7280; font-size: 0.9rem; }
+.pie { text-align: center; padding: 20px; }
+@media (max-width: 600px) { .fila { grid-template-columns: 1fr; } }

@@ -1,0 +1,24 @@
+<%!
+    /** Escapa texto para mostrarlo de forma segura en HTML. */
+    private String esc(String texto) {
+        if (texto == null) {
+            return "";
+        }
+        return texto.replace("&", "&amp;").replace("<", "&lt;")
+                    .replace(">", "&gt;").replace("\"", "&quot;");
+    }
+%>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ZeusShop Express - Productos</title>
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/estilos.css">
+</head>
+<body>
+<header class="barra">
+    <span class="logo">ZeusShop Express</span>
+    <nav><a href="<%= request.getContextPath() %>/productos">Productos</a></nav>
+</header>
+<main class="contenedor">
