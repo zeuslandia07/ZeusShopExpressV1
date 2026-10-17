@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: cabecera('Productos')}"></head>
+<body>
+<nav th:replace="~{fragmentos/layout :: barra}"></nav>
+
+<main class="container py-4">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+        <h1 class="h3 titulo mb-0">Gestión de Productos</h1>
+        <a class="btn btn-primary" th:href="@{/productos/nuevo}">+ Nuevo producto</a>
+    </div>
+
+    <!-- Aviso de resultado de la última operación -->
+    <div class="alert alert-primary" th:if="${mensaje}" th:text="${mensaje}"></div>
+
+    <!-- Búsqueda por nombre (método GET) -->
+    <form class="row g-2 mb-3" th:action="@{/productos}" method="get">
+        <div class="col">
+            <input type="text" class="form-control" name="buscar"
+                   placeholder="Buscar por nombre" th:value="${buscar}">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+            <a class="btn btn-link" th:href="@{/productos}">Limpiar</a>
+        </div>
+    </form>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead class="encabezado-tabla">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Estado</th>
+                <th>Proveedor / Categoría</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Una fila por cada producto de la lista -->
+            <tr th:each="p : ${productos}">
+                <td th:text="${p.idProducto}"></td>
+                <td th:text="${p.nombre}"></td>
+                <td th:text="${p.descripcion}"></td>
+                <td th:text="'$ ' + ${#numbers.formatDecimal(p.precio, 1, 'POINT', 2, 'COMMA')}"></td>
+                <td th:text="${p.estado}"></td>
+                <td th:text="${p.idProveedor} + ' / ' + ${p.idCategoria}"></td>
+                <td>
+                    <div class="d-flex gap-2 align-items-center">
+                        <a th:href="@{/productos/{id}/editar(id=${p.idProducto})}">Editar</a>
+                        <!-- Eliminar se envía con POST -->
+                        <form th:action="@{/productos/{id}/eliminar(id=${p.idProducto})}" method="post"
+                              class="m-0" onsubmit="return confirm('¿Eliminar este producto?');">
+                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(productos)}">
+                <td colspan="7" class="text-center text-muted">No hay productos para mostrar.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="text-muted small" th:text="'Total mostrado: ' + ${#lists.size(productos)} + ' producto(s)'"></p>
+</main>
+
+<footer th:replace="~{fragmentos/layout :: pie}"></footer>
+</body>
+</html>

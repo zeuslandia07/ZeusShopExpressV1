@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: cabecera(${titulo})}"></head>
+<body>
+<nav th:replace="~{fragmentos/layout :: barra}"></nav>
+
+<main class="container py-4">
+    <h1 class="h3 titulo mb-3" th:text="${titulo}">Producto</h1>
+
+    <!-- Formulario enviado con POST; th:object enlaza los campos con la entidad Producto -->
+    <form th:action="@{/productos/guardar}" th:object="${producto}" method="post"
+          class="row g-3" style="max-width: 700px;">
+
+        <!-- El id va oculto: vacío = producto nuevo, con valor = actualización -->
+        <input type="hidden" th:field="*{idProducto}">
+
+        <div class="col-12">
+            <label class="form-label" for="nombre">Nombre *</label>
+            <input type="text" class="form-control" id="nombre" th:field="*{nombre}" maxlength="150">
+            <div class="text-danger small" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+        </div>
+
+        <div class="col-12">
+            <label class="form-label" for="descripcion">Descripción</label>
+            <textarea class="form-control" id="descripcion" rows="3" th:field="*{descripcion}" maxlength="255"></textarea>
+            <div class="text-danger small" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label" for="precio">Precio *</label>
+            <input type="number" class="form-control" id="precio" th:field="*{precio}" step="0.01" min="0">
+            <div class="text-danger small" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label" for="estado">Estado *</label>
+            <select class="form-select" id="estado" th:field="*{estado}">
+                <option value="ACTIVO">Activo</option>
+                <option value="INACTIVO">Inactivo</option>
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label" for="idProveedor">ID del proveedor * (debe existir)</label>
+            <input type="number" class="form-control" id="idProveedor" th:field="*{idProveedor}" min="1">
+            <div class="text-danger small" th:if="${#fields.hasErrors('idProveedor')}" th:errors="*{idProveedor}"></div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label" for="idCategoria">ID de la categoría * (debe existir)</label>
+            <input type="number" class="form-control" id="idCategoria" th:field="*{idCategoria}" min="1">
+            <div class="text-danger small" th:if="${#fields.hasErrors('idCategoria')}" th:errors="*{idCategoria}"></div>
+        </div>
+
+        <div class="col-12 d-flex gap-3 align-items-center">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a th:href="@{/productos}">Cancelar</a>
+        </div>
+    </form>
+</main>
+
+<footer th:replace="~{fragmentos/layout :: pie}"></footer>
+</body>
+</html>

@@ -1,0 +1,14 @@
+/* Identidad visual de ZeusShop Express */
+:root { --azul: #102A72; --gris: #F3F4F6; }
+body { font-family: Roboto, Arial, sans-serif; }
+.barra { background: var(--azul); }
+.titulo { color: var(--azul); }
+.encabezado-tabla th { background: var(--azul); color: #fff; }
+.form-control, .form-select { background: var(--gris); }
+.btn-primary {
+    --bs-btn-bg: var(--azul);
+    --bs-btn-border-color: var(--azul);
+    --bs-btn-hover-bg: #0c205a;
+    --bs-btn-hover-border-color: #0c205a;
+}
+.alert-primary { border-left: 4px solid var(--azul); }
