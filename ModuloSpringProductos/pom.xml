@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <!-- Spring Boot gestiona las versiones de todas las dependencias -->
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -11,17 +10,14 @@
         <version>3.3.5</version>
         <relativePath/>
     </parent>
-
     <groupId>com.zeusshop</groupId>
     <artifactId>zeusshop-productos</artifactId>
     <version>1.0.0</version>
     <name>ZeusShop Express - Modulo Productos</name>
     <description>Modulo de gestion de productos con Spring Boot</description>
-
     <properties>
         <java.version>17</java.version>
     </properties>
-
     <dependencies>
         <!-- Spring MVC y servidor Tomcat embebido -->
         <dependency>
@@ -49,8 +45,12 @@
             <artifactId>mariadb-java-client</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!-- Cifrado de contrasenas con BCrypt (login y registro) -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>

@@ -1,0 +1,41 @@
+ENDPOINTS - API DE REGISTRO E INICIO DE SESION
+Proyecto: ZeusShop Express (modulo Spring Boot)
+Evidencia: GA7-220501096-AA5-EV02
+URL base: http://localhost:8081
+
+==================================================
+1. REGISTRO DE USUARIO
+==================================================
+Metodo:   POST
+URL:      http://localhost:8081/api/auth/registro
+Header:   Content-Type: application/json
+
+Cuerpo (JSON):
+{
+  "nombre": "Daniel",
+  "correo": "daniel@correo.com",
+  "contrasena": "123456"
+}
+
+Respuestas:
+  201 Created      {"exito": true,  "mensaje": "Registro exitoso"}
+  409 Conflict     {"exito": false, "mensaje": "El correo ya esta registrado"}
+  400 Bad Request  {"exito": false, "mensaje": "<detalle de la validacion>"}
+
+==================================================
+2. INICIO DE SESION
+==================================================
+Metodo:   POST
+URL:      http://localhost:8081/api/auth/login
+Header:   Content-Type: application/json
+
+Cuerpo (JSON):
+{
+  "correo": "daniel@correo.com",
+  "contrasena": "123456"
+}
+
+Respuestas:
+  200 OK            {"exito": true,  "mensaje": "Autenticacion satisfactoria"}
+  401 Unauthorized  {"exito": false, "mensaje": "Error en la autenticacion"}
+  400 Bad Request   {"exito": false, "mensaje": "<detalle de la validacion>"}
