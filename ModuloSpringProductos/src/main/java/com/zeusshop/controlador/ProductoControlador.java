@@ -31,13 +31,6 @@ public class ProductoControlador {
     public ProductoControlador(ProductoServicio productoServicio) {
         this.productoServicio = productoServicio;
     }
-
-    /** La página de inicio redirige a la lista de productos. */
-    @GetMapping("/")
-    public String inicio() {
-        return REDIRIGIR_LISTA;
-    }
-
     /** GET /productos: muestra la lista, con búsqueda opcional por nombre. */
     @GetMapping("/productos")
     public String listar(@RequestParam(required = false) String buscar, Model modelo) {
