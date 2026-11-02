@@ -519,11 +519,24 @@ function getProducts() {
 
 function saveProducts(products) {
 
+
+    // Productos antes del cambio, para saber qué se creó, editó o eliminó
+    const anteriores = JSON.parse(
+        localStorage.getItem("zeusshopProductos") || "[]"
+    );
+
+
+    // Se muestra el cambio de inmediato en pantalla
     localStorage.setItem(
         "zeusshopProductos",
         JSON.stringify(products)
     );
 
+
+    // Se envía el cambio a la API (MariaDB)
+    if (typeof enviarCambiosProductosApi === "function") {
+        enviarCambiosProductosApi(anteriores, products);
+    }
 }
 
 
@@ -1454,9 +1467,22 @@ if (refreshProducts) {
 
 if (productsTableBody) {
 
-    renderProducts(
-        getProducts()
-    );
+
+    // Primero se cargan los productos desde la API y luego se pinta la tabla
+    if (typeof sincronizarProductosDesdeApi === "function") {
+
+
+        sincronizarProductosDesdeApi().then(function () {
+            renderProducts(getProducts());
+        });
+
+
+    } else {
+
+
+        renderProducts(getProducts());
+    }
+
 
 }
 /* =====================================================
