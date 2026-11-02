@@ -14,7 +14,7 @@ const loginMessage = document.getElementById("loginMessage");
 
 if (loginForm) {
 
-    loginForm.addEventListener("submit", function (event) {
+    loginForm.addEventListener("submit", async function (event) {
 
         // Evita que la página se recargue
         event.preventDefault();
@@ -63,10 +63,72 @@ if (loginForm) {
         }
 
 
-        /* -------------------------
-           SIMULACIÓN DE INICIO
-           DE SESIÓN
+/* -------------------------
+           INICIO DE SESIÓN CON LA API
+           Servicio: POST /api/auth/login
         ------------------------- */
+
+
+        let respuesta;
+        let datos = {};
+
+
+        try {
+
+
+            respuesta = await fetch(
+                "http://localhost:8081/api/auth/login",
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        correo: correo,
+                        contrasena: password
+                    })
+                }
+            );
+
+
+            datos = await respuesta.json();
+
+
+        } catch (error) {
+
+
+            // El servidor está apagado o no hay conexión
+            loginMessage.textContent =
+                "No se pudo conectar con el servidor.";
+
+
+            loginMessage.classList.add("login-error");
+
+
+            return;
+        }
+
+
+
+
+        // Credenciales incorrectas o datos inválidos
+        if (!respuesta.ok) {
+
+
+            loginMessage.textContent = datos.mensaje;
+
+
+            loginMessage.classList.add("login-error");
+
+
+            return;
+        }
+
+
+
+
+        /* -------------------------
+           GUARDAR SESIÓN
+        ------------------------- */
+
 
         const usuario = {
             correo: correo,
@@ -81,21 +143,43 @@ if (loginForm) {
         );
 
 
-        // Recordar usuario
+        // Recordar el correo si se marcó la casilla
         if (recordar) {
-
-            localStorage.setItem(
-                "zeusshopCorreo",
-                correo
-            );
-
+            localStorage.setItem("zeusshopCorreo", correo);
         } else {
-
-            localStorage.removeItem(
-                "zeusshopCorreo"
-            );
+            localStorage.removeItem("zeusshopCorreo");
         }
 
+
+
+
+        /* -------------------------
+           MENSAJE DE ÉXITO
+        ------------------------- */
+
+
+        loginMessage.textContent =
+            "Inicio de sesión exitoso. Cargando...";
+
+
+        loginMessage.classList.add("login-success");
+
+
+
+
+        /* -------------------------
+           REDIRECCIÓN
+        ------------------------- */
+
+
+        setTimeout(function () {
+
+
+            window.location.href =
+                "pages/dashboard.html";
+
+
+        }, 1000);
 
         /* -------------------------
            MENSAJE DE ÉXITO
